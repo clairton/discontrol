@@ -1,33 +1,29 @@
 package br.eti.clairton.discontrol.entity;
 
-import java.util.Date;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
-/**
- * Representa a Entidade Disco.
- * 
- * @author Clairton Rodrigo Heinzen <clairton.rodrigo@gmail.com>
- * 
- */
 @Entity
-public class Disco extends AbstractEntidadePersistente implements
-		EntidadePersistente {
-	private static final long serialVersionUID = 611994931872228412L;
+public class Disco implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
+
+	@NotNull
+	private String nome;
+
 	private String descricao;
-	@Temporal(value = TemporalType.TIME)
-	private Date duracao;
-	private String sinope;
-	@ManyToOne
-	private Genero genero;
+
+	@NotNull
+	private String genero;
+	
+	private String duracao;
 
 	public Long getId() {
 		return id;
@@ -35,6 +31,14 @@ public class Disco extends AbstractEntidadePersistente implements
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getDescricao() {
@@ -45,27 +49,19 @@ public class Disco extends AbstractEntidadePersistente implements
 		this.descricao = descricao;
 	}
 
-	public Date getDuracao() {
-		return duracao;
-	}
-
-	public void setDuracao(Date duracao) {
-		this.duracao = duracao;
-	}
-
-	public String getSinope() {
-		return sinope;
-	}
-
-	public void setSinope(String sinope) {
-		this.sinope = sinope;
-	}
-
-	public Genero getGenero() {
+	public String getGenero() {
 		return genero;
 	}
 
-	public void setGenero(Genero genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public String getDuracao() {
+		return duracao;
+	}
+
+	public void setDuracao(String duracao) {
+		this.duracao = duracao;
 	}
 }

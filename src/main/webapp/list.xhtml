@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<ui:composition template="/_decorator.xhtml">
+	<ui:define name="title">
+		<h:outputText value="#{i18n.listTitle}" />
+	</ui:define>
+	<ui:define name="heading">
+		<h:outputText value="#{i18n.listHeading}" />
+	</ui:define>
+	<ui:define name="body">
+		<h:form>
+			<h:commandButton title="#{i18n.new}"
+				value="#{i18n.new}" action="create" />
+			<br />
+			<hr />
+			<br />
+			<p:panel
+				header="#{bean.entidades.size()} #{i18n.amountEntries}" 
+				toggleable="true" closable="true" toggleSpeed="500">
+				<h:dataTable value="#{bean.entidades}" var="entidade">
+					<h:column>
+						<f:facet name="header">#{i18n.nome}</f:facet>
+						#{entidade.nome}
+					</h:column>
+					<h:column>
+						<f:facet name="header">#{i18n.descricao}</f:facet>
+						#{entidade.descricao}
+					</h:column>					
+					<h:column>
+						<f:facet name="header">#{i18n.genero}</f:facet>
+						#{entidade.genero}
+					</h:column>				
+					<h:column>
+						<f:facet name="header">#{i18n.duracao}</f:facet>
+						#{entidade.duracao}
+					</h:column>
+				</h:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
